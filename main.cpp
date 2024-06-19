@@ -235,9 +235,9 @@ int main(int argc, char *argv[]) {
             new_bullet.p.v.x = rand() % 640; // Random x position
             new_bullet.p.v.y = 0; // Start at the top of the screen
             new_bullet.v.v.x = (rand() % 100 - 50); // Random horizontal velocity
-            new_bullet.v.v.y = (rand() % 75 + 15); // Random vertical velocity
+            new_bullet.v.v.y = (rand() % 75 + 35); // Random vertical velocity
             new_bullet.a.v.x = 0; // No horizontal acceleration
-            new_bullet.a.v.y = (rand() % 50 + 15); // Random vertical acceleration
+            new_bullet.a.v.y = (rand() % 50 + 35); // Random vertical acceleration
             bullets.push_back(new_bullet);
             last_bullet_spawn_time = now;
         }
@@ -252,6 +252,16 @@ int main(int argc, char *argv[]) {
             return bullet.p.v.y > 640;
         }), bullets.end());
 
+        // Check for collisions between player and bullets
+        SDL_Rect player_rect = {(int)(player.p.v.x * TILE_SIZE - (TILE_SIZE/2)),(int)(player.p.v.y * TILE_SIZE - TILE_SIZE),64, 128};
+        for (const auto& bullet : bullets) {
+            SDL_Rect bullet_rect = {static_cast<int>(bullet.p.v.x), static_cast<int>(bullet.p.v.y), 64, 100}; // Adjust size as needed
+            if (SDL_HasIntersection(&player_rect, &bullet_rect)) {
+                still_playing = false;
+                break;
+            }
+        }
+
         SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0x00);
         SDL_RenderClear(renderer);
         SDL_RenderCopy(renderer, background_texture.get(), NULL, NULL);
@@ -259,25 +269,12 @@ int main(int argc, char *argv[]) {
         draw_bullets(renderer, bullet_texture, bullets);
 
 
-        SDL_Rect player_rect = {(int)(player.p.v.x*TILE_SIZE-(TILE_SIZE/2)),(int)(player.p.v.y*TILE_SIZE-TILE_SIZE),64, 128};
-        {
-            int r = 0, g = 0, b = 0;
-            if (is_on_the_ground(player, game_map)) {
-                r = 255;
-            }
-            if (is_in_collision(player.p, game_map)) {
-                g = 255;
-            }
-            SDL_SetRenderDrawColor(renderer, r,g,b, 0xFF);
-        }
-        SDL_RenderDrawRect(renderer,  &player_rect);
         SDL_RenderCopyEx(renderer, player_texture.get(), NULL, &player_rect,0, NULL, SDL_FLIP_NONE);
 
         SDL_RenderPresent(renderer);
         current_time = current_time + microseconds((long long int)(dt*1000000.0));
         std::this_thread::sleep_until(current_time);
     }
-
 
     // After the game loop ends, display the final score
     std::cout << "Score: " << score << std::endl;
