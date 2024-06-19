@@ -1,0 +1,11 @@
+C:/Users/kubaf/Downloads/untitled-2024-05-08-1/untitled/cmake-build-debug/CMakeFiles/mygame.dir
+C:/Users/kubaf/Downloads/untitled-2024-05-08-1/untitled/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/kubaf/Downloads/untitled-2024-05-08-1/untitled/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/kubaf/Downloads/untitled-2024-05-08-1/untitled/cmake-build-debug/vendored/SDL/CMakeFiles/sdl_headers_copy.dir
+C:/Users/kubaf/Downloads/untitled-2024-05-08-1/untitled/cmake-build-debug/vendored/SDL/CMakeFiles/SDL2main.dir
+C:/Users/kubaf/Downloads/untitled-2024-05-08-1/untitled/cmake-build-debug/vendored/SDL/CMakeFiles/SDL2.dir
+C:/Users/kubaf/Downloads/untitled-2024-05-08-1/untitled/cmake-build-debug/vendored/SDL/CMakeFiles/SDL2-static.dir
+C:/Users/kubaf/Downloads/untitled-2024-05-08-1/untitled/cmake-build-debug/vendored/SDL/CMakeFiles/SDL2_test.dir
+C:/Users/kubaf/Downloads/untitled-2024-05-08-1/untitled/cmake-build-debug/vendored/SDL/CMakeFiles/uninstall.dir
+C:/Users/kubaf/Downloads/untitled-2024-05-08-1/untitled/cmake-build-debug/vendored/SDL/CMakeFiles/edit_cache.dir
+C:/Users/kubaf/Downloads/untitled-2024-05-08-1/untitled/cmake-build-debug/vendored/SDL/CMakeFiles/rebuild_cache.dir
